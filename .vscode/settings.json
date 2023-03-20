@@ -1,0 +1,38 @@
+{
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true,
+    "next-env.d.ts": true,
+    ".vscode": true,
+    "node_modules": true,
+    "tsconfig.json": true,
+    "package-lock.json": true,
+    "README.md": true,
+    ".eslintrc.json": true,
+    "next.config.js": true,
+    ".gitignore": true,
+    ".next": true
+  },
+  "hide-files.files": [
+    "next-env.d.ts",
+    ".vscode",
+    "node_modules",
+    "tsconfig.json",
+    "package-lock.json",
+    "README.md",
+    ".eslintrc.json",
+    "next.config.js",
+    ".gitignore",
+    ".next"
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
+}
