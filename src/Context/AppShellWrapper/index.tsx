@@ -1,11 +1,11 @@
 // import "server-only";
 "use client"
 
-import BackgroundParticles from "@/Components/BackgroundParticles";
-import { AppShell, Container, Transition } from "@mantine/core";
+import AppShellHeader from "@/Components/UI/AppShellComponents/AppShellHeader/AppShellHeader";
+import AppShellNavbar from "@/Components/UI/AppShellComponents/AppShellNavBar/AppShellNavBar";
+import BackgroundParticles from "@/Components/UI/BackgroundParticles";
+import { AppShell, Container, MediaQuery, Text, Transition, rem } from "@mantine/core";
 import { useMergedRef, useTimeout, useViewportSize } from "@mantine/hooks";
-
-
 
 
 interface Props {
@@ -14,24 +14,28 @@ interface Props {
 
 const AppShellWrapper = (props: Props) => {
 
-
-
     return (
-
-        <AppShell
-
-        // padding={0}
-
-        // zIndex={1}
-        // pos={"relative"}
-
-        // ref={xMousePos.xMousePosRef}
+        <MediaQuery
+            largerThan={"sm"}
+            styles={{ paddingLeft: `1rem`, }}
         >
 
+            <AppShell
+                // padding={"md"}
+                pt={"sm"}
+                header={<AppShellHeader />}
+                navbar={<AppShellNavbar />}
+            // py={0}
+            // pl={"lg"}
+            // navbarOffsetBreakpoint="sm"
+            >
 
-            <BackgroundParticles />
-            {props.children}
-        </AppShell>
+
+                {/* <BackgroundParticles /> */}
+                {props.children}
+            </AppShell>
+
+        </MediaQuery>
     )
 }
 

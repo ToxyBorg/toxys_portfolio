@@ -30,16 +30,11 @@ const colors = {
 
 }
 
-// export const backgroundColorLight = colors.GradientLight
-// export const backgroundColorDark = colors.GradientDark
-
-
-// export const textColorLight = colors.Peach
-// export const textColorDark = colors.Peach
-
-export const Colors = (colorScheme: ColorScheme = 'dark') => {
+export const DefaultColorScheme: ColorScheme = "light"
+export const Colors = (colorScheme: ColorScheme = DefaultColorScheme) => {
 
     // props.colorScheme = props.colorScheme ? props.colorScheme : "light"
+
 
     const backgroundColor = colorScheme === "dark" ? colors.GradientDark : colors.GradientLight
     const textColor = colorScheme === "dark" ? colors.Peach : colors.Peach
