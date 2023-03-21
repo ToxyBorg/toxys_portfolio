@@ -7,7 +7,7 @@ import { useIntersection, useMouse, useScrollIntoView } from '@mantine/hooks';
 import { useRouter, useServerInsertedHTML } from 'next/navigation';
 import { useRef, useState } from 'react';
 
-import { Colors } from '@/Shared/colors';
+import { Colors, DefaultColorScheme } from '@/Shared/colors';
 import styles from '@/Shared/css/styles';
 
 
@@ -27,12 +27,17 @@ export default function MantineRootStyleWrapper({ children }: { children: React.
     ));
 
 
-    const [colorScheme, setColorScheme] = useState<ColorScheme>('dark');
+    const [colorScheme, setColorScheme] = useState<ColorScheme>(DefaultColorScheme);
 
-    const getColors = Colors(colorScheme)
 
     const toggleColorScheme = () => {
-        setColorScheme(colorScheme === "dark" ? "light" : "dark");
+
+        const currentColorScheme = colorScheme === "dark" ? "light" : "dark"
+
+        setColorScheme(currentColorScheme);
+
+        const getColors = Colors(currentColorScheme)
+
 
         // document.body.className = styles.Animated_Background_Gradient;
         // document.body.className = cx(styles.Animated_Background_Gradient, styles.HiddenScrollBar)

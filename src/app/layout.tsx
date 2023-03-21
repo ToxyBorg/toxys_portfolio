@@ -1,3 +1,5 @@
+import "server-only"
+
 import ContextWrapper from "@/Context/ContextWrapper"
 import { Colors } from "@/Shared/colors"
 // import { backgroundColorLight, textColorLight } from "@/Shared/colors"

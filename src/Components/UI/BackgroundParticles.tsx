@@ -42,7 +42,7 @@ const BackgroundParticles: NextComponentType<NextPageContext, {}, Props> = (
                 //         value: "#0d47a1",
                 //     },
                 // },
-                fpsLimit: 30,
+                fpsLimit: 60,
                 interactivity: {
                     events: {
                         onClick: {
