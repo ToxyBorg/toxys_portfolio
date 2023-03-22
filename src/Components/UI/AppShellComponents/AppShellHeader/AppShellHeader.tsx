@@ -1,6 +1,6 @@
 import { Header, MediaQuery, useMantineColorScheme } from "@mantine/core";
 import type { NextComponentType, NextPageContext } from "next";
-import ThemeSwitch from "./Components/ThemeSwitch";
+import ThemeSwitch from "../Shared/ThemeSwitch";
 import { Colors } from "@/Shared/colors";
 import styles from "@/Shared/css/styles";
 
@@ -23,7 +23,7 @@ const AppShellHeader: NextComponentType<NextPageContext, {}, Props> = (
       <Header
         display={"none"}
         height={"auto"}
-        // p={"md"}
+        p={"xs"}
 
         position={{ bottom: 0 }}
 

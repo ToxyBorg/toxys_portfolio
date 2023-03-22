@@ -16,9 +16,9 @@
     "package-lock.json": true,
     "README.md": true,
     ".eslintrc.json": true,
-    ".gitignore": true,
-    ".next": true,
-    ".gitattributes": true
+    ".gitattributes": true,
+    "tsconfig.json": true,
+    "next.config.js": true
   },
   "hide-files.files": [
     "next-env.d.ts",
@@ -27,10 +27,12 @@
     "package-lock.json",
     "README.md",
     ".eslintrc.json",
-    ".gitignore",
-    ".next",
-    ".gitattributes"
+    ".gitattributes",
+    "tsconfig.json",
+    "next.config.js",
+    ".gitignore"
   ],
   "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "dotenv.enableAutocloaking": false
 }
