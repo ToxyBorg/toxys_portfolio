@@ -19,6 +19,7 @@ const ThemeSwitch: NextComponentType<NextPageContext, {}, Props> = (
             h={"100%"}
             w={"100%"}
             mx={"auto"}
+            radius={"md"}
 
         >
             {colorScheme == "dark" ? <lightThemeIcon.icon size="1.1rem" /> : <darkThemeIcon.icon size="1.1rem" />}

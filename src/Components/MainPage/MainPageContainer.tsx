@@ -4,18 +4,21 @@ import { Colors } from "@/Shared/colors";
 import styles from "@/Shared/css/styles";
 import { Center, Container, useMantineColorScheme } from "@mantine/core";
 import type { NextComponentType, NextPageContext } from "next";
+import Image from "next/image";
 
 interface Props { }
 
 const MainPageContainer: NextComponentType<NextPageContext, {}, Props> = (
     props: Props,
 ) => {
+
+
     const { colorScheme } = useMantineColorScheme()
     const getColors = Colors(colorScheme)
     return (
         <Container
             fluid
-            w={"100%"}
+            maw={2000}
             h={"100vh"}
             // top={0}
             // pos={"fixed"}
