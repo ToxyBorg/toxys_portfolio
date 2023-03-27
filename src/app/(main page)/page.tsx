@@ -6,7 +6,7 @@ import Image from "next/image";
 
 
 
-const Page = async () => {
+const Page = () => {
 
 
   // console.log(getData)
@@ -16,6 +16,7 @@ const Page = async () => {
   return (
     <>
       <MainPageContainer />
+
     </>
   )
 }

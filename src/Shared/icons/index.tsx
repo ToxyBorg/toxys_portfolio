@@ -5,7 +5,7 @@
 
 import { BiSearchAlt, BiHomeCircle, BiCategoryAlt, BiCart, BiUser, BiLockOpen, BiLock, BiCog, BiMessageAltDetail, BiImageAdd, BiCodeAlt } from "react-icons/bi"
 import { GiEarrings, GiDiamondRing, GiPearlNecklace, GiRing, GiPayMoney, GiExitDoor } from 'react-icons/gi';
-import { BsSunFill, BsMoonFill, BsCardText, BsCart, BsCartDash, BsCartPlus, BsArrowDownCircle, BsArrowUpCircle, BsImages, BsCartCheck, BsCartX, BsArrowRight, BsArrowLeft, BsArrowDown, BsCheckLg, BsCartCheckFill, BsBoxSeam, BsBoxSeamFill, BsMailbox, BsCreditCard2Back, BsPaypal, BsTable, BsDiscord, BsCodeSlash } from 'react-icons/bs';
+import { BsSunFill, BsMoonFill, BsCardText, BsCart, BsCartDash, BsCartPlus, BsArrowDownCircle, BsArrowUpCircle, BsImages, BsCartCheck, BsCartX, BsArrowRight, BsArrowLeft, BsArrowDown, BsCheckLg, BsCartCheckFill, BsBoxSeam, BsBoxSeamFill, BsMailbox, BsCreditCard2Back, BsPaypal, BsTable, BsDiscord, BsCodeSlash, BsRocketTakeoff } from 'react-icons/bs';
 import { FiInstagram, FiMail } from 'react-icons/fi';
 import { GrAddCircle, GrCircleAlert, GrDocumentUpdate, GrLinkNext, GrLinkPrevious, GrUserAdmin } from 'react-icons/gr';
 import { TfiRulerAlt } from 'react-icons/tfi'
@@ -92,23 +92,13 @@ export const PostalServiceSVG = (props: localSVGType) => {
 }
 
 // NAVBAR
+
+
 // export const home: IconInfo = { icon: BiHomeCircle, name: "Home" }
 export const search: IconInfo = { icon: BiSearchAlt, name: "Search" }
 export const categories: IconInfo = { icon: BiCategoryAlt, name: "Categories" }
-export const cart: IconInfo = { icon: BsCart, name: "Cart" }
 export const settings: IconInfo = { icon: BiCog, name: "Settings" }
 export const contactInfo: IconInfo = { icon: BiMessageAltDetail, name: "Contact Info" }
-
-// export const user: IconInfo = { icon: BiUser, name: "Account" }
-
-// ADMIN
-
-
-// NAVBAR CATEGORIES
-export const earrings: IconInfo = { icon: GiEarrings, name: "earrings" }
-export const rings: IconInfo = { icon: GiDiamondRing, name: "rings" }
-export const necklaces: IconInfo = { icon: GiPearlNecklace, name: "necklaces" }
-export const bracelets: IconInfo = { icon: GiRing, name: "bracelets" }
 
 // NAVBAR LOCK BUTTON
 export const navLock: IconInfo = { icon: BiLock, name: "Lock Navbar" }
@@ -118,7 +108,8 @@ export const navUnlock: IconInfo = { icon: BiLockOpen, name: "Unlock Navbar" }
 export const circleAlert: IconInfo = { icon: GrCircleAlert, name: "CircleAlert" }
 
 // NAVBAR SLIDE LEFT 
-export const navSlideLeft: IconInfo = { icon: AiOutlineDoubleLeft, name: "Hide navbar" }
+export const navSlide: IconInfo = { icon: BsRocketTakeoff, name: "Hide navbar" }
+export const navSlideLeft: IconInfo = { icon: BsRocketTakeoff, name: "Hide navbar" }
 export const navSlideRight: IconInfo = { icon: AiOutlineDoubleRight, name: "Unhide navbar" }
 
 // HEADER THEME SWITCHER
@@ -136,13 +127,6 @@ export const devDiscord: IconInfo = { icon: BsDiscord, name: "Discord", link: "h
 export const devGithub: IconInfo = { icon: FaGithub, name: "Github", link: "https://github.com/ToxyBorg" }
 export const developerInfo: IconInfo = { icon: FaLaptopCode, name: "Developer" }
 
-// ITEM CARDS ICONS
-export const itemDescription: IconInfo = { icon: BsCardText, name: "Item Description" }
-export const itemDescriptionShowMore: IconInfo = { icon: BsArrowDownCircle, name: "Show more" }
-export const itemDescriptionShowLess: IconInfo = { icon: BsArrowUpCircle, name: "Show less" }
-export const cartAdd: IconInfo = { icon: BsCartPlus, name: "Add to Cart" }
-export const cartRemove: IconInfo = { icon: BsCartDash, name: "Remove from Cart" }
-export const showAllImages: IconInfo = { icon: BsImages, name: "Show all images" }
 
 // CHECKOUT STEPPER
 export const cartEmpty: IconInfo = { icon: BsCartX, name: "Empty your cart" }
@@ -151,53 +135,15 @@ export const arrowNext: IconInfo = { icon: BsArrowRight, name: "Go to next step"
 export const arrowPrevious: IconInfo = { icon: BsArrowLeft, name: "Go to previous step" }
 export const arrowDown: IconInfo = { icon: BsArrowDown, name: "Go to next step" }
 
-export const cartStep: IconInfo = { icon: BsCartCheck, name: "Go to checkout" }
-export const cartStepChecked: IconInfo = { icon: BsCartCheckFill, name: "Cart checked" }
-
-export const measurementsStep: IconInfo = { icon: TfiRulerAlt, name: "Enter your measurements" }
-export const measurementsStepChecked: IconInfo = { icon: FaRuler, name: "Measurements checked" }
-
-export const deliveryStep: IconInfo = { icon: BsBoxSeam, name: "Choose a delivery option" }
-export const deliveryStepChecked: IconInfo = { icon: BsBoxSeamFill, name: "Delivery option checked" }
-export const inPersonDelivery: IconInfo = { icon: MdEmojiPeople, name: "In-person delivery" }
-export const shippingDelivery: IconInfo = { icon: BsMailbox, name: "Shipping delivery" }
-
-
-export const paymentStep: IconInfo = { icon: IoCashOutline, name: "Payment method" }
-export const paymentStepChecked: IconInfo = { icon: IoCash, name: "Payment method checked" }
-export const cashPayment: IconInfo = { icon: GiPayMoney, name: "Cash payment method" }
-export const bankTransferPayment: IconInfo = { icon: BsCreditCard2Back, name: "Bank transfer payment method" }
-export const paypalIcon: IconInfo = { icon: BsPaypal, name: "Paypal" }
-
-export const multiplicationIcon: IconInfo = { icon: FaTimes, name: "Multiplication" }
-export const equalsIcon: IconInfo = { icon: FaEquals, name: "Equals" }
-export const plusIcon: IconInfo = { icon: FaPlus, name: "Plus" }
-
 
 export const emailVerificationStep: IconInfo = { icon: MdOutlineMarkEmailRead, name: "Email verification" }
 export const emailVerificationStepChecked: IconInfo = { icon: MdMarkEmailRead, name: "Email verification checked" }
 export const emailAtSymbol: IconInfo = { icon: HiOutlineAtSymbol, name: "Enter your email" }
 
 
-export const checkoutStepChecked: IconInfo = { icon: BsCheckLg, name: "Step checked" }
-
 
 export const errorIcon: IconInfo = { icon: VscError, name: "Error" }
 export const moreInfoIcon: IconInfo = { icon: TbInfoSquareRounded, name: "Info" }
-
-
-// ADMIN ICONS
-export const admin: IconInfo = { icon: FaUserAstronaut, name: "Admin" }
-export const adminLogout: IconInfo = { icon: GiExitDoor, name: "Admin Logout" }
-export const adminOptions: IconInfo = { icon: SlOptions, name: "Admin options" }
-export const adminAddItem: IconInfo = { icon: BiImageAdd, name: "Add an item" }
-export const adminUploadImage: IconInfo = { icon: TbUpload, name: "Upload an image" }
-export const adminRejectImageUpload: IconInfo = { icon: CiSquareRemove, name: "Rejected image upload" }
-export const adminEditButton: IconInfo = { icon: VscEdit, name: "Edit Item" }
-export const adminUpdateButton: IconInfo = { icon: MdUpdate, name: "Update Item" }
-export const adminDeleteImage: IconInfo = { icon: MdDeleteForever, name: "Delete image" }
-export const adminDeleteOrder: IconInfo = { icon: MdDeleteForever, name: "Delete order" }
-export const adminViewOrdersButton: IconInfo = { icon: BsTable, name: "See orders" }
 
 
 // FOOTER

@@ -44,3 +44,64 @@ body::-webkit-scrollbar-thumb {
         background-position: 0% 50%
     }
 }
+
+
+
+/**************************************************************************************/
+
+
+.Animated_Border_Gradient {
+    --borderWidth: 0.3rem;
+    position: relative;
+    border-radius: var(--borderWidth);
+    /* isolation: isolate; */
+    /* z-index: 0; */
+    place-items: center;
+    /* width: fit-content; */
+    /* height: fit-content; */
+    /* padding: 0; */
+}
+
+.Animated_Border_Gradient>div {
+    /* z-index: 100; */
+    border-radius: inherit;
+}
+
+.Animated_Border_Gradient::after {
+    content: "";
+    position: absolute;
+    top: calc(-1 * var(--borderWidth));
+    left: calc(-1 * var(--borderWidth));
+    height: calc(100% + var(--borderWidth) * 2);
+    width: calc(100% + var(--borderWidth) * 2);
+    background: linear-gradient(60deg,
+            #f79533,
+            #f37055,
+            #ef4e7b,
+            #a166ab,
+            #5073b8,
+            #1098ad,
+            #07b39b,
+            #6fba82);
+    border-radius: calc(2 * var(--borderWidth));
+    z-index: -1;
+    animation: AnimateBorder 3s ease alternate infinite;
+    background-size: 300% 300%;
+}
+
+@keyframes AnimateBorder {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/**********************************************************************************************/
