@@ -84,6 +84,7 @@ const AppShellHeader: NextComponentType<NextPageContext, {}, Props> = (
         <Header
           ref={hoverRef}
 
+          fixed
           height={"fit-content"}
           position={{ bottom: 0 }}
 
