@@ -12,17 +12,20 @@ const ThemeSwitch: NextComponentType<NextPageContext, {}, Props> = (
 
     return (
         <ActionIcon
-            variant="outline"
-            color={colorScheme == "dark" ? 'yellow' : 'blue'}
+            variant="transparent"
+            // color={colorScheme == "dark" ? 'yellow' : 'blue'}
             onClick={() => toggleColorScheme()}
             title="Toggle color scheme"
-            h={"100%"}
-            w={"100%"}
+            h={"fit-content"}
+            w={"fit-content"}
+            p={"md"}
+
             mx={"auto"}
-            radius={"md"}
+            my={"auto"}
+        // radius={"md"}
 
         >
-            {colorScheme == "dark" ? <lightThemeIcon.icon size="1.1rem" /> : <darkThemeIcon.icon size="1.1rem" />}
+            {colorScheme == "dark" ? <lightThemeIcon.icon /> : <darkThemeIcon.icon />}
         </ActionIcon>
     );
 }

@@ -15,31 +15,31 @@ interface Props {
 
 const AppShellWrapper = (props: Props) => {
 
-    const [navBarHidden, setNavBarHidden] = useState(false);
+    // const [navBarHidden, setNavBarHidden] = useState(false);
 
     return (
         <MediaQuery
             largerThan={"sm"}
             styles={{
-                // paddingLeft: `2rem`,
-                paddingLeft: navBarHidden ? 0 : "2rem",
-                // paddingLeft: 0,
+                transition: "all 400ms ease-in-out",
+                paddingTop: "7rem",
             }}
         >
 
             <AppShell
-                // padding={"md"}
-                padding={0}
-                // pt={"sm"}
+
+                sx={{
+                    transition: "all 400ms ease-in-out",
+                }}
+
+                pt={"md"}
+                pb={"xl"}
                 header={<AppShellHeader />}
-                navbar={<AppShellNavbar navBarHidden={navBarHidden} setNavBarHidden={setNavBarHidden} />}
-                // py={0}
-                // pl={"lg"}
-                navbarOffsetBreakpoint={navBarHidden ? 2000 : "sm"}
+            // navbar={<AppShellNavbar navBarHidden={navBarHidden} setNavBarHidden={setNavBarHidden} />}
+
+            // navbarOffsetBreakpoint={navBarHidden ? 3000 : "sm"}
             >
 
-
-                {/* <BackgroundParticles /> */}
                 {props.children}
             </AppShell>
 

@@ -47,7 +47,7 @@ export default function MantineRootStyleWrapper({ children }: { children: React.
 
 
 
-        document.body.style.backgroundImage = getColors.backgroundColor
+        document.body.style.backgroundImage = getColors.bodyBackground
 
         document.body.style.backgroundSize = "300% 300%";
         document.body.style.animation = `${styles.AnimateBG} 7s ease infinite`;

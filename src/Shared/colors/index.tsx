@@ -28,6 +28,11 @@ const colors = {
     GradientDarkTranslucid: "linear-gradient(to bottom,hsla(0, 0%, 50%, 0%) 0%, hsla(263, 98%, 18%, 20%) 15%, hsla(285, 98%, 18%, 40%) 25% , hsla(305, 98%, 20%,60%) 51%,hsla(334, 97%, 24%, 80%) 100%) ",
     GradientDarkVertical: "linear-gradient(-100deg, rgb(35, 1, 91) 0%, rgb(68, 1, 91) 25% , rgb(100, 1, 91) 51%,rgb(122, 2, 54) 100%) ",
 
+    GradientBlue: "radial-gradient(circle at 74.2% 50.9%, rgb(14, 72, 222) 5.2%, rgb(3, 22, 65) 75.3%)",
+    GradientBlueVertical: "linear-gradient(45deg, rgb(14, 72, 222) 0%, rgb(3, 22, 65) 75.3%)",
+
+    GradientBlueLight: "linear-gradient(109.5deg, rgb(13, 11, 136) 9.4%, rgb(86, 255, 248) 78.4%)",
+
 }
 
 export const DefaultColorScheme: ColorScheme = "light"
@@ -36,17 +41,23 @@ export const Colors = (colorScheme: ColorScheme = DefaultColorScheme) => {
     // props.colorScheme = props.colorScheme ? props.colorScheme : "light"
 
 
-    const backgroundColor = colorScheme === "dark" ? colors.GradientDark : colors.GradientLight
+    const bodyBackground = colorScheme === "dark" ? colors.GradientDark : colors.GradientBlue
+    const backgroundColor = colorScheme === "dark" ? colors.GradientDark : colors.GradientBlue
+    const navBarBackgroundColor = colorScheme === "dark" ? colors.GradientDark : colors.GradientBlueVertical
     const textColor = colorScheme === "dark" ? colors.Peach : colors.Peach
     const iconColor = colorScheme === "dark" ? colors.Peach : colors.Peach
     const particleColor = colorScheme === "dark" ? colors.Peach : colors.Peach
+    const borderColor = colorScheme === "dark" ? colors.Peach : colors.Peach
 
 
     return {
+        bodyBackground: bodyBackground,
         backgroundColor: backgroundColor,
+        navBarBackgroundColor: navBarBackgroundColor,
         textColor: textColor,
         iconColor: iconColor,
         particlesColor: particleColor,
+        borderColor: borderColor,
     }
 }
 

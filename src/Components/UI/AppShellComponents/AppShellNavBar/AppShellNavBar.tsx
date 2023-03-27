@@ -1,10 +1,13 @@
 import { Colors } from "@/Shared/colors";
 import styles from "@/Shared/css/styles";
-import { Button, Divider, Grid, Header, MediaQuery, Navbar, SimpleGrid, Stack, Text, Transition, useMantineColorScheme } from "@mantine/core";
+import { ActionIcon, Button, Container, Divider, Grid, Header, MediaQuery, Navbar, SimpleGrid, Stack, Text, Transition, useMantineColorScheme } from "@mantine/core";
 import { useColorScheme } from "@mantine/hooks";
 import type { NextComponentType, NextPageContext } from "next";
 import { Dispatch, SetStateAction, useState } from "react";
 import ThemeSwitch from "../Shared/ThemeSwitch";
+import { useAutoAnimate } from '@formkit/auto-animate/react'
+import { navSlide } from "@/Shared/icons";
+import { IconContext } from "react-icons";
 
 interface Props {
   navBarHidden: boolean,
@@ -20,108 +23,175 @@ const AppShellNavbar: NextComponentType<NextPageContext, {}, Props> = (
   const getColors = Colors(colorScheme)
 
   // const [navBarHidden, setNavBarHidden] = useState(false);
+  // const [parent, enableAnimations] = useAutoAnimate()
 
   return (
 
-    // <MediaQuery
-    //   query="(min-width: 250px) and (max-width: 750px)"
-    //   styles={{ height: 60, border: "2px solid black", position: "absolute", bottom: 0, }}
-    // >
-    <>
+    <IconContext.Provider value={{
+      color: getColors.iconColor,
+      size: "2rem",
+    }}
+    >
 
       <MediaQuery
         largerThan={"sm"}
         styles={{
-          display: props.navBarHidden ? "block" : "none",
+          display: "block",
+          // transition: "all 800ms ease-in-out",
+          transitionDuration: "900ms",
+
+          transform: props.navBarHidden ? "translateX(0%)" : "translateX(-100%)",
+          // transitionDuration: "600ms",
+          zIndex: 1,
 
         }}
       >
+        <ActionIcon
+          sx={{
+            display: "none",
+            position: "fixed",
+            left: 0,
 
-        <Transition mounted={props.navBarHidden} transition="slide-down" duration={400} timingFunction="ease">
-          {(styles) =>
+            borderRadius: "0px calc(0.25rem * 2) calc(0.25rem * 2) 0px",
+            border: `0.25rem solid ${getColors.borderColor} `,
+            borderLeft: "0px",
 
-            <Button
-              style={styles}
-              // display={"none"}
-              pos={"fixed"}
-              onClick={() => props.setNavBarHidden(false)}
-            >
-              Open Nav
-            </Button>
-          }
-        </Transition>
+            background: "rgba(255, 255, 255, 0.2)",
 
+          }}
+          // bg={getColors.navBarBackgroundColor}
+          // className={styles.Animated_Border_Gradient}
+          variant={"outline"}
+          // mx={"auto"}
+          // my={"auto"}
+          w={"fit-content"}
+          h={"5rem"}
+          p={"md"}
+
+          onClick={() => props.setNavBarHidden(!props.navBarHidden)}
+          title={props.navBarHidden ? "Show Navigation bar" : "Hide Navigation bar"}
+        >
+          <navSlide.icon
+            style={{
+              transition: "all 800ms ease-in-out",
+              transform: props.navBarHidden ? "rotate(45deg)" : "rotate(-135deg)"
+            }}
+          // size={"1.5rem"}
+          />
+        </ActionIcon>
 
       </MediaQuery>
+
 
       <MediaQuery
         largerThan={"sm"}
         styles={{
-          display: !props.navBarHidden ? "block" : "none",
-          // margin: !navBarHidden ? "",
-          // width: !props.navBarHidden ? "auto" : 0,
+          transition: "all 800ms ease-in-out",
 
+          transform: !props.navBarHidden ? "translateX(0%)" : "translateX(-100%)",
+          // transitionDuration: "600ms",
         }}
       >
 
-        <Transition mounted={!props.navBarHidden} transition="slide-right" duration={400} timingFunction="ease">
-          {(navStyles) =>
+        <Navbar
 
+          hidden
+          p={"xs"}
+          hiddenBreakpoint="sm"
+          width={{ base: "6rem" }}
+          height={"auto"}
 
+          bg={getColors.navBarBackgroundColor}
+          // className={` ${styles.Animated_Background_Gradient} ${styles.Animated_Border_Gradient}`}
+          className={` ${styles.Animated_Background_Gradient}}`}
 
-            <Navbar
-              style={navStyles}
-              hidden
-              p={"xs"}
-              hiddenBreakpoint="sm"
-              width={{ sm: 80, xl: 90 }}
-              height={"auto"}
+          top={0}
 
-              bg={getColors.backgroundColor}
-              className={styles.Animated_Background_Gradient}
+          my={"md"}
+          sx={{
+            borderRadius: "0px calc(0.25rem * 2) calc(0.25rem * 2) 0px",
+            border: `0.25rem solid ${getColors.borderColor} `,
 
-              top={0}
+            borderLeft: "0px",
+            // transform: "translateX(-100%)",
 
-              // m={!navBarHidden ? "md" : 0}
-              m={"md"}
-              sx={{
-                borderRadius: 15,
-                border: "2px solid white"
-              }}
+            // transitionDuration: "600ms",
+          }}
+        >
 
+          <Navbar.Section>
+            <ActionIcon
+              variant="transparent"
+
+              h={"fit-content"}
+              w={"fit-content"}
+              p={"md"}
+
+              mx={"auto"}
+              my={"auto"}
+              radius={"md"}
+              onClick={() => props.setNavBarHidden(!props.navBarHidden)}
+              title={props.navBarHidden ? "Show Navigation bar" : "Hide Navigation bar"}
             >
+              <navSlide.icon
+                style={{
+                  transition: "all 800ms ease-in-out",
+                  transform: props.navBarHidden ? "rotate(45deg)" : "rotate(-135deg)"
+                }}
+              />
+            </ActionIcon>
+          </Navbar.Section>
 
-              <Navbar.Section>
-                <Button
-                  mx={"auto"}
-                  w={"100%"}
-                  h={"100%"}
-                  onClick={() => props.setNavBarHidden(true)}
-                >
-                  X
-                </Button>
+          <Divider my="sm" />
 
-              </Navbar.Section>
-
-              <Divider my="sm" />
-
-              <Navbar.Section grow>
-                <ThemeSwitch />
-              </Navbar.Section>
+          <Navbar.Section grow>
+            <ThemeSwitch />
+          </Navbar.Section>
 
 
-            </Navbar>
-
-          }
-        </Transition>
+        </Navbar>
       </MediaQuery>
 
-
-    </>
-
-
+    </IconContext.Provider>
 
   )
 }
 
 export default AppShellNavbar
+
+/**
+
+      <MediaQuery
+
+        largerThan={"sm"}
+        styles={{
+          display: "block",
+          transform: props.navBarHidden ? "translateX(0%)" : "translateX(-150%)",
+          transitionDuration: "600ms",
+          // display: props.navBarHidden ? "block" : "none",
+
+        }}
+      >
+
+        <Button
+
+          sx={{
+            transform: "translateX(-150%)",
+            transitionDuration: "600ms",
+            zIndex: 250,
+          }}
+          display={"none"}
+
+          m={"xs"}
+          pos={"fixed"}
+          onClick={() => props.setNavBarHidden(false)}
+        >
+          Open Nav
+        </Button>
+
+
+      </MediaQuery>
+
+      
+ */
+
