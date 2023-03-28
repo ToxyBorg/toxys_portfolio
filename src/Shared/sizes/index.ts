@@ -1,4 +1,8 @@
+
+const borderRadius = 0.35;
 export const Sizes = {
-    borderSize: "0.25rem",
-    borderRadius: 15
+    borderSize: `${borderRadius}rem`,
+    borderRadius: `${borderRadius}rem`,
+    outsideBorderRadius: `${borderRadius * 2}rem`,
+
 }

@@ -18,7 +18,10 @@
     ".eslintrc.json": true,
     ".gitattributes": true,
     "tsconfig.json": true,
-    "next.config.js": true
+    "next.config.js": true,
+    ".gitignore": true,
+    "src/pages": true,
+    "src/pages/api": true
   },
   "hide-files.files": [
     "next-env.d.ts",
@@ -30,7 +33,9 @@
     ".gitattributes",
     "tsconfig.json",
     "next.config.js",
-    ".gitignore"
+    ".gitignore",
+    "src/pages",
+    "src/pages/api"
   ],
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
