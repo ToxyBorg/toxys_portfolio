@@ -9,6 +9,8 @@ import { useRef, useState } from 'react';
 
 import { Colors, DefaultColorScheme } from '@/Shared/colors';
 import styles from '@/Shared/css/styles';
+import { useSetAtom } from 'jotai';
+import { HeaderAtTheTopAtom } from '../../../Stores/headerAtTheTopStore';
 
 
 
@@ -54,6 +56,12 @@ export default function MantineRootStyleWrapper({ children }: { children: React.
 
         document.body.style.color = getColors.textColor
     };
+
+
+    /*************************************************************************** */
+
+    const HeaderAtTheTopAtomSetter = useSetAtom(HeaderAtTheTopAtom)
+    HeaderAtTheTopAtomSetter()
 
     return (
         <CacheProvider value={cache}>

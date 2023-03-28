@@ -1,14 +1,13 @@
 import { Colors } from "@/Shared/colors";
-import styles from "@/Shared/css/styles";
+import styles, { defaultStyles } from "@/Shared/css/styles";
 import { navSlide } from "@/Shared/icons";
 import { ActionIcon, Container, MediaQuery, useMantineColorScheme } from "@mantine/core";
+import { useAtom } from "jotai";
 import type { NextComponentType, NextPageContext } from "next";
 import { Dispatch, SetStateAction } from "react";
+import { headerHiddenAtom } from "../../../../../../Stores/headerHiddenStore";
 
-interface Props {
-    headerHidden: boolean,
-    setHeaderHidden: Dispatch<SetStateAction<boolean>>
-}
+interface Props { }
 
 const ShowHeaderButton: NextComponentType<NextPageContext, {}, Props> = (
     props: Props,
@@ -16,26 +15,33 @@ const ShowHeaderButton: NextComponentType<NextPageContext, {}, Props> = (
 
     const { colorScheme } = useMantineColorScheme()
     const getColors = Colors(colorScheme)
+    const [headerHidden, setHeaderHidden] = useAtom(headerHiddenAtom);
 
     return (
         <MediaQuery
             largerThan={"sm"}
             styles={{
-                display: "none",
+
+                transition: "all 400ms ease-in-out",
+                top: 0,
+                transform: headerHidden ? "translateY(0%)" : "translateY(-150%)",
+                // transform: headerHidden ? "translateY(-85vh)" : "translateY(-100vh)",
 
             }}
         >
 
             <ActionIcon
                 sx={{
-                    transform: props.headerHidden ? "translateY(0%)" : "translateY(150%)",
 
-                    // transitionDuration: "600ms",
+                    ...defaultStyles.default_gradient_border_radius,
+
                     transition: "all 400ms ease-in-out",
+                    transform: headerHidden ? "translateY(0%)" : "translateY(150%)",
+                    opacity: headerHidden ? 1 : 0,
 
                     zIndex: 2,
                 }}
-                display={"block"}
+                // display={"block"}
 
                 m={"xs"}
                 pos={"fixed"}
@@ -49,7 +55,7 @@ const ShowHeaderButton: NextComponentType<NextPageContext, {}, Props> = (
                 h={"fit-content"}
                 // p={0}
 
-                onClick={() => props.setHeaderHidden(false)}
+                onClick={() => setHeaderHidden(!headerHidden)}
                 title={"Show Navigation bar"}
                 className={styles.Animated_Border_Gradient}
 
@@ -64,15 +70,28 @@ const ShowHeaderButton: NextComponentType<NextPageContext, {}, Props> = (
                     py={"xs"}
                     px={"lg"}
 
-                >
-                    <navSlide.icon
-                        style={{
-                            transition: "all 800ms ease-in-out",
-                            transform: props.headerHidden ? "rotate(-45deg)" : "rotate(135deg)",
-                        }}
 
-                        size={"2rem"}
-                    />
+                >
+                    <MediaQuery
+                        largerThan={"sm"}
+                        styles={{
+                            rotate: headerHidden ? "180deg" : "-180deg",
+                        }}
+                    >
+                        <navSlide.icon
+
+                            style={{
+                                // background: getColors.backgroundColor,
+                                transition: "all 800ms ease-in-out",
+                                transform: headerHidden ? "rotate(-45deg)" : "rotate(135deg)",
+                            }}
+                            // rotate={"200px"}
+
+                            size={"2rem"}
+                        />
+
+
+                    </MediaQuery>
                 </Container>
 
             </ActionIcon>

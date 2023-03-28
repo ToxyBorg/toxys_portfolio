@@ -1,32 +1,35 @@
-import { ActionIcon, Button, Container, Group, Header, MediaQuery, Transition, useMantineColorScheme } from "@mantine/core";
+import { ActionIcon, Button, CSSObject, Container, Group, Header, MediaQuery, Transition, useMantineColorScheme } from "@mantine/core";
 import type { NextComponentType, NextPageContext } from "next";
 import ThemeSwitch from "../Shared/ThemeSwitch";
 import { Colors } from "@/Shared/colors";
-import styles from "@/Shared/css/styles";
-import { SetStateAction, useState } from "react";
+import styles, { defaultStyles } from "@/Shared/css/styles";
+import { CSSProperties, Dispatch, SetStateAction, useState } from "react";
 import { useHeadroom, useHover, useWindowScroll } from "@mantine/hooks";
 import HideHeaderButton from "./Components/HideHeaderButton";
 import { navSlide } from "@/Shared/icons";
 import { IconContext } from "react-icons";
 import ShowHeaderButton from "./Components/ShowHeaderButton";
+import { headerHiddenAtom } from "../../../../../Stores/headerHiddenStore";
+import { useAtom, useAtomValue } from "jotai";
+import { HeaderAtTheTopAtom } from "../../../../../Stores/headerAtTheTopStore";
+import { Sizes } from "@/Shared/sizes";
 
 interface Props { }
+
 
 const AppShellHeader: NextComponentType<NextPageContext, {}, Props> = (
   props: Props,
 ) => {
 
-  const [headerHidden, setHeaderHidden] = useState(false);
+  const headerHidden = useAtomValue(headerHiddenAtom);
 
   const { colorScheme } = useMantineColorScheme()
   const getColors = Colors(colorScheme)
 
   const pinned = useHeadroom({ fixedAt: 120 });
 
-  // const [scroll, scrollTo] = useWindowScroll();
   const { hovered, ref: hoverRef } = useHover();
 
-  // console.log("HOVERED: ", hovered, " | PINNED: ", pinned)
 
   return (
 
@@ -39,107 +42,83 @@ const AppShellHeader: NextComponentType<NextPageContext, {}, Props> = (
     >
 
 
-      <ShowHeaderButton headerHidden={headerHidden} setHeaderHidden={setHeaderHidden} />
+      <ShowHeaderButton />
 
 
       <MediaQuery
         largerThan={"sm"}
         styles={{
-          // transform: (pinned) ? "translateY(0%)" : "translateY(-150%)",
-          transform: "translateY(0%)",
-          // opacity: (scroll.y > 50 && !hovered) ? 0.3 : 1,
-          opacity: (pinned || hovered) ? 1 : 0.3,
 
           transition: "all 400ms ease-in-out",
 
-          width: "100%",
+          transform: (!headerHidden) ? "translateY(0%)" : "translateY(-150%)",
+          opacity: (!headerHidden) ? ((pinned || hovered) ? 1 : 0.3) : 0,
+
+
+          width: (pinned || hovered) ? "98%" : "100%",
           maxWidth: "3200px",
 
-          borderRadius: 0,
-          border: "0px",
-          // borderTopLeftRadius: 0,
-          // borderTopRightRadius: 0,
-
-          margin: 0,
-          marginInline: "auto",
+          border: 0,
+          borderRadius: (pinned || hovered) ? Sizes.borderRadius : 0,
 
           top: 0,
+          marginTop: (pinned || hovered) ? "1rem" : 0,
 
 
-          ":after": {
-            border: "0px",
-            // borderTopRightRadius: "0px",
-            // borderBottomRightRadius: "0px",
+          "&:after": {
             transition: "all 400ms ease-in-out",
+            opacity: (!headerHidden) ? ((pinned || hovered) ? 1 : 0) : 0,
 
-            // opacity: (scroll.y > 50 && !hovered) ? 0 : 1,
-            opacity: (pinned || hovered) ? 1 : 0,
-
-            borderRadius: 0,
           },
         }}
+
       >
 
 
         <Header
           ref={hoverRef}
 
-          fixed
           height={"fit-content"}
           position={{ bottom: 0 }}
 
-          // className={styles.Animated_Background_Gradient}
           className={styles.Animated_Border_Gradient}
 
+          fixed
           w={"96%"}
+
           sx={{
-            // borderRadius: 15,
-            // border: `2px solid ${getColors.borderColor}`,
-            border: "0px",
+
+            ...defaultStyles.default_gradient_border_radius,
+
 
             transform: (!headerHidden && pinned) ? "translateY(0%)" : "translateY(150%)",
-            opacity: (!headerHidden && pinned) ? 1 : 0,
+            opacity: (!headerHidden) ? 1 : 0,
 
-            // transitionDuration: "600ms",
             transition: "all 400ms ease-in-out",
 
           }}
-          mb={"xs"}
+
+
+          my={"xs"}
           mx={"auto"}
           p={0}
 
         >
+
           <Group
             noWrap
 
             className={styles.Animated_Background_Gradient}
             bg={getColors.backgroundColor}
-          // p={"0.2rem"}
+            sx={{
+              overflow: "hidden",
+            }}
 
           >
 
             <ThemeSwitch />
 
-            <HideHeaderButton headerHidden={headerHidden} setHeaderHidden={setHeaderHidden} />
-
-            {/* <MediaQuery
-              // smallerThan={"sm"}
-              largerThan={"sm"}
-              styles={{
-                display: "none",
-              }}
-            >
-
-              <Button
-                mx={"auto"}
-                w={"100%"}
-                h={"100%"}
-                onClick={() => setHeaderHidden(true)}
-              >
-                X
-              </Button>
-
-            </MediaQuery> */}
+            <HideHeaderButton />
 
           </Group>
 
